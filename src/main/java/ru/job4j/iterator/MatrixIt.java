@@ -26,11 +26,10 @@ public class MatrixIt implements Iterator<Integer> {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        Integer rsl = data[row][column++];
         if (column >= data[row].length) {
             row++;
             column = 0;
         }
-        return rsl;
+        return data[row][column++];
     }
 }
