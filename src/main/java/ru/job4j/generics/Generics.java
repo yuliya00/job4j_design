@@ -38,7 +38,7 @@ public class Generics {
         }
     }
 
-    //public void printBoundedWildCard(List<Predator> list) {
+    /*public void printBoundedWildCard(List<Predator> list) {*/
     public void printBoundedWildCard(List<? extends Animal> list) {
         /*for (Iterator<Predator> iterator = list.iterator(); iterator.hasNext();) { */
         for (Iterator<? extends Animal> iterator = list.iterator(); iterator.hasNext();) {
