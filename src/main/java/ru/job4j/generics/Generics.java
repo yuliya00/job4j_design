@@ -19,7 +19,7 @@ public class Generics {
         generics.printObject(third);
         System.out.println();
 
-        generics.printBoundedWildCard(first);
+        /*generics.printBoundedWildCard(first);*/
         generics.printBoundedWildCard(second);
         generics.printBoundedWildCard(third);
         System.out.println();
@@ -39,11 +39,11 @@ public class Generics {
     }
 
     /*public void printBoundedWildCard(List<Predator> list) {*/
-    public void printBoundedWildCard(List<? extends Animal> list) {
+    public void printBoundedWildCard(List<? extends Predator> list) {
         /*for (Iterator<Predator> iterator = list.iterator(); iterator.hasNext();) { */
-        for (Iterator<? extends Animal> iterator = list.iterator(); iterator.hasNext();) {
+        for (Iterator<? extends Predator> iterator = list.iterator(); iterator.hasNext();) {
             /*Object next = iterator.next();*/
-            Animal next = iterator.next();
+            Predator next = iterator.next();
             System.out.println("Текущий элемент: " + next);
         }
     }
