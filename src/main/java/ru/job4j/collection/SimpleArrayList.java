@@ -21,11 +21,11 @@ public class SimpleArrayList<T> implements SimpleList<T> {
 
     @Override
     public void add(T value) {
-        modCount++;
         if (size == container.length) {
             grow();
         }
-            container[size++] = value;
+        container[size++] = value;
+        modCount++;
     }
 
     @Override
@@ -59,8 +59,8 @@ public class SimpleArrayList<T> implements SimpleList<T> {
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
-            private int expectedModCount = modCount;
-            private int point = 0;
+            int expectedModCount = modCount;
+            int point = 0;
 
             @Override
             public boolean hasNext() {
@@ -75,7 +75,6 @@ public class SimpleArrayList<T> implements SimpleList<T> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-
                 return container[point++];
             }
         };
