@@ -12,24 +12,25 @@ public class SimpleLinkedList<E> implements LinkedList<E> {
 
     @Override
     public void add(E value) {
+        Node<E> current = head;
+        Node<E> newNode = new Node<>(value, null);
         if (head == null) {
-            head = new Node<>(value, null);
+            head = newNode;
         } else {
-            Node<E> current = head;
             while (current.next != null) {
                 current = current.next;
             }
-            current.next = new Node<>(value, null);
-            modCount++;
-            size++;
+            current.next = newNode;
         }
+        modCount++;
+        size++;
     }
 
     @Override
     public E get(int index) {
         Objects.checkIndex(index, size);
         Node<E> current = head;
-        for (int i = 0; i <= index; i++) {
+        for (int i = 0; i < index; i++) {
             current = current.next;
         }
         return current.item;
