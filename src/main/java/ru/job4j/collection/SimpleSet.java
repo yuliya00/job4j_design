@@ -31,5 +31,4 @@ public class SimpleSet<T> implements Set<T>{
     public Iterator<T> iterator() {
         return set.iterator();
     }
-
 }
