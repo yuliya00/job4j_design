@@ -142,4 +142,18 @@ class ForwardLinkedTest {
         assertThat(second.hasNext()).isFalse();
     }
 
+    @Test
+    void whenAddFirst() {
+        list.add(3);
+        list.add(4);
+        assertThat(list.deleteFirst()).isEqualTo(1);
+        assertThat(list.deleteFirst()).isEqualTo(2);
+        assertThat(list.deleteFirst()).isEqualTo(3);
+        list.addFirst(8);
+        list.addFirst(9);
+        assertThat(list).hasSize(3);
+        assertThat(list).containsExactly(9, 8, 4);
+        assertThat(list.deleteFirst()).isEqualTo(9);
+    }
+
 }
