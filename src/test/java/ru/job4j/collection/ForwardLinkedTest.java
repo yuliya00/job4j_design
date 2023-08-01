@@ -155,5 +155,4 @@ class ForwardLinkedTest {
         assertThat(list).containsExactly(9, 8, 4);
         assertThat(list.deleteFirst()).isEqualTo(9);
     }
-
 }
