@@ -46,7 +46,7 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
         capacity *= 2;
         MapEntry<K, V>[] newTable = new MapEntry[capacity];
         for (MapEntry<K, V> tab : table) {
-            if(Objects.nonNull(tab)) {
+            if (Objects.nonNull(tab)) {
                 newTable[getIndex(tab.key)] = tab;
             }
         }
@@ -54,8 +54,8 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     }
 
     private boolean equalsKey(K key, int index) {
-        return Objects.nonNull(table[index]) && Objects.hashCode(table[index].key) == Objects.hashCode(key) &&
-                Objects.equals(table[index].key, key);
+        return Objects.nonNull(table[index]) && Objects.hashCode(table[index].key) == Objects.hashCode(key)
+                && Objects.equals(table[index].key, key);
     }
 
     @Override
@@ -87,7 +87,7 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
                 if (modCount != expectedModCount) {
                     throw new ConcurrentModificationException();
                 }
-                while ( i < capacity && table[i] == null) {
+                while (i < capacity && table[i] == null) {
                     i++;
                 }
                 return i < capacity;
