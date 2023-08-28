@@ -13,7 +13,7 @@ public class ResultFile {
                     out.write(System.lineSeparator().getBytes());
                 }
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
