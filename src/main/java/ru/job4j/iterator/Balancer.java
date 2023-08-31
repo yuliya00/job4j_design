@@ -4,13 +4,13 @@ import java.util.*;
 
 public class Balancer {
     public static void split(List<ArrayList<Integer>> nodes, Iterator<Integer> source) {
+        int index = 0;
         while (source.hasNext()) {
-            for (ArrayList nod : nodes) {
-                nod.add(source.next());
-                if (!source.hasNext()) {
-                    break;
-                }
+            if (index == nodes.size()) {
+                index = 0;
             }
+            nodes.get(index).add(source.next());
+            index++;
         }
     }
 }
