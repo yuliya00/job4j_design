@@ -6,26 +6,24 @@ import java.util.NoSuchElementException;
 public class CyclicIterator<T> implements Iterator<T> {
     private List<T> data;
 
-    private Iterator<T> mIterator;
-
+    private int index;
     public CyclicIterator(List<T> data) {
         this.data = data;
-        mIterator = data.iterator();
     }
 
     @Override
     public boolean hasNext() {
-        if (!mIterator.hasNext()) {
-            mIterator = data.iterator();
+        if (!data.isEmpty() && index == data.size()) {
+            index = 0;
         }
-        return mIterator.hasNext();
+        return !data.isEmpty();
     }
 
     @Override
     public T next() {
-        if (!mIterator.hasNext()) {
-            mIterator = data.iterator();
+        if (data.isEmpty()) {
+            throw new NoSuchElementException();
         }
-        return mIterator.next();
+        return data.get(index++);
     }
 }
