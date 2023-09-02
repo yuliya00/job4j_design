@@ -22,7 +22,7 @@ class ConfigTest {
                 IllegalArgumentException.class,
                 config::load
         );
-        assertThat(exception.getMessage()).isEqualTo("=");
+        assertThat(exception.getMessage()).isEqualTo("Error");
     }
 
     @Test
@@ -39,5 +39,27 @@ class ConfigTest {
         Config config = new Config(path);
         config.load();
         assertThat(config.value("age")).isEqualTo("22");
+    }
+
+    @Test
+    void whenExceptionToKey() {
+        String path = "./data/=values.properties";
+        Config config = new Config(path);
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                config::load
+        );
+        assertThat(exception.getMessage()).isEqualTo("Error");
+    }
+
+    @Test
+    void whenExceptionToValue() {
+        String path = "./data/key=.properties";
+        Config config = new Config(path);
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                config::load
+        );
+        assertThat(exception.getMessage()).isEqualTo("Error");
     }
 }

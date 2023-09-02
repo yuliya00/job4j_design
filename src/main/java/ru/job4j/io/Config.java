@@ -19,7 +19,7 @@ public class Config {
             while ((line = bufferedReader.readLine()) != null) {
                 if (!line.startsWith("#") && !line.isEmpty() && !(line.matches(".+=.+"))
                         && (line.startsWith("=") || line.indexOf("=") == line.length() - 1 || !line.contains("="))) {
-                    throw new IllegalArgumentException(line);
+                    throw new IllegalArgumentException("Error");
                 }
                 if (line.matches(".+=.+")) {
                     int i = line.indexOf('=');
